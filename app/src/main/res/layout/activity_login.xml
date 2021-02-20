@@ -5,28 +5,79 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <EditText
-        android:id="@+id/etUsername"
+    <LinearLayout
+        android:id="@+id/login_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="@string/etUsername_hint"
-        android:inputType="textEmailAddress" />
+        android:layout_margin="30dp"
+        android:orientation="vertical"
+        tools:context=".LoginActivity">
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="@string/etPassword_hint"
-        android:inputType="textPassword" />
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@string/ivLogo_description"
+            app:srcCompat="@drawable/instagram_logo" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/btnLogin_text" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etUsernameLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            app:boxStrokeColor="@color/boxOutline"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etUsername_hint"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:id="@+id/spText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etPasswordLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            app:boxStrokeColor="@color/boxOutline"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etPassword_hint"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:id="@+id/spButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/royal_blue"
+            android:text="@string/btnLogin_text" />
+    </LinearLayout>
 </LinearLayout>

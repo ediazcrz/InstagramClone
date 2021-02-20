@@ -3,6 +3,10 @@ plugins {
     id 'kotlin-android'
 }
 
+def apiKeyPropertiesFile = rootProject.file("apikey.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -15,6 +19,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "APPLICATION_ID", apiKeyProperties['APPLICATION_ID'])
+        buildConfigField("String", "CLIENT_KEY", apiKeyProperties['CLIENT_KEY'])
     }
 
     buildTypes {

@@ -10,7 +10,7 @@ import com.parse.LogInCallback
 import com.parse.ParseException
 import com.parse.ParseUser
 
-const val TAG = "LoginActivity"
+private const val TAG = "LoginActivity"
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var loginBinding: ActivityLoginBinding

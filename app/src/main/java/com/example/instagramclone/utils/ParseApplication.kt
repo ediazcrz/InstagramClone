@@ -1,6 +1,8 @@
-package com.example.instagramclone
+package com.example.instagramclone.utils
 
 import android.app.Application
+import com.example.instagramclone.BuildConfig
+import com.example.instagramclone.Post
 import com.parse.Parse
 import com.parse.ParseObject
 

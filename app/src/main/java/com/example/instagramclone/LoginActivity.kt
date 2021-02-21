@@ -38,18 +38,15 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginUser(username: String, password: String) {
         Log.i(TAG, "Attempting to login user $username")
-        ParseUser.logInInBackground(username, password, object: LogInCallback {
-            override fun done(user: ParseUser?, e: ParseException?) {
-                if (e!= null) {
-                    Log.e(TAG,"Issue with login", e)
-                    return
-                }
-
+        ParseUser.logInInBackground(username, password, ({ user, e ->
+            if (user != null) {
                 // navigate to the main activity if the user has signed in properly
                 launchMainActivity()
                 Toast.makeText(this@LoginActivity, "Success!", Toast.LENGTH_SHORT).show()
+            } else {
+                Log.e(TAG,"Issue with login", e)
             }
-        })
+        }))
     }
 
     private fun launchMainActivity() {

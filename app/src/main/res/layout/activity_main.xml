@@ -25,6 +25,7 @@
             android:id="@+id/btnCaptureImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/royal_blue"
             android:text="@string/btnCaptureImage_text" />
 
         <ImageView
@@ -37,6 +38,7 @@
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/royal_blue"
             android:text="@string/btnSubmit_text" />
 
         <Button
@@ -44,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnLogOut_text"
+            android:textColor="@color/royal_blue"
             android:backgroundTint="@android:color/transparent"
             style="@style/Widget.MaterialComponents.Button.TextButton" />
     </LinearLayout>

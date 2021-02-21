@@ -4,4 +4,7 @@
     <string name="etUsername_hint">Username</string>
     <string name="btnLogin_text">Login</string>
     <string name="ivLogo_description">Instagram Logo</string>
+    <string name="etDescription_hint">Description...</string>
+    <string name="btnCaptureImage_text">Take Picture</string>
+    <string name="btnSubmit_text">Submit</string>
 </resources>

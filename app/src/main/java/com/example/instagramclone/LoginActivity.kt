@@ -25,12 +25,35 @@ class LoginActivity : AppCompatActivity() {
         val etUsername = loginBinding.etUsername
         val etPassword = loginBinding.etPassword
         val btnLogin = loginBinding.btnLogin
+        val btnSignUp = loginBinding.btnSignUp
 
         btnLogin.setOnClickListener() {
             Log.i(TAG, "onClick login button")
             val username = etUsername.text.toString()
             val password = etPassword.text.toString()
             loginUser(username, password)
+        }
+
+        btnSignUp.setOnClickListener {
+            Log.i(TAG, "onClick sign up button")
+            val username = etUsername.text.toString()
+            val password = etPassword.text.toString()
+            signUpUser(username, password)
+        }
+    }
+
+    private fun signUpUser(username: String, password: String) {
+        Log.i(TAG, "Attempting to sign up user $username")
+        val user = ParseUser()
+        // Set the user's username and password
+        user.username = username
+        user.setPassword(password)
+        user.signUpInBackground {
+            if (it == null) {
+                loginUser(username, password)
+            } else {
+                Log.e(TAG,"Issue with sign up: ${it.message}")
+            }
         }
     }
 
@@ -40,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
             if (user != null) {
                 // navigate to the main activity if the user has signed in properly
                 launchMainActivity()
-                Toast.makeText(this@LoginActivity, "Success!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, "You are now logged in", Toast.LENGTH_SHORT).show()
             } else {
                 Log.e(TAG,"Issue with login", e)
             }

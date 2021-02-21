@@ -1,7 +1,27 @@
 package com.example.instagramclone
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
+import android.text.Editable
+import android.util.Log
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
+import com.example.instagramclone.databinding.ActivityMainBinding
+import com.parse.ParseFile
+import com.parse.ParseQuery
+import com.parse.ParseUser
+import java.io.File
+
+
+private const val TAG = "MainActivity"
+private const val CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding

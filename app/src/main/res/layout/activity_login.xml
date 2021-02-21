@@ -79,6 +79,16 @@
             android:layout_weight="1"
             android:backgroundTint="@color/royal_blue"
             android:text="@string/btnLogin_text" />
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/royal_blue"
+            android:text="@string/btnSignUp_text"
+            android:backgroundTint="@android:color/transparent"
+            style="@style/Widget.MaterialComponents.Button.TextButton" />
     </LinearLayout>
 
 </LinearLayout>

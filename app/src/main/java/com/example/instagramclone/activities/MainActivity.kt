@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.example.instagramclone.Post
 import com.example.instagramclone.databinding.ActivityMainBinding
 import com.parse.ParseException
 import com.parse.ParseFile

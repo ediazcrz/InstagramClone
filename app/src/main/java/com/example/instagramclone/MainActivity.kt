@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.example.instagramclone.databinding.ActivityMainBinding
+import com.parse.ParseException
 import com.parse.ParseFile
 import com.parse.ParseQuery
 import com.parse.ParseUser
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         ivPostImage = mainBinding.ivPostImage
         val btnCaptureImage = mainBinding.btnCaptureImage
         val btnSubmit = mainBinding.btnSubmit
+        val btnLogOut = mainBinding.btnLogOut
 
         btnCaptureImage.setOnClickListener {
             launchCamera()
@@ -59,6 +61,24 @@ class MainActivity : AppCompatActivity() {
             val currentUser = ParseUser.getCurrentUser()
             savePost(description, currentUser, photoFile)
         }
+
+        btnLogOut.setOnClickListener {
+            val currentUser = ParseUser.getCurrentUser()
+            ParseUser.logOutInBackground { e: ParseException? ->
+                if (e == null) {
+                    Log.i(TAG, "Logged out ${currentUser.username}")
+                    Toast.makeText(this, "You are now signed out", Toast.LENGTH_SHORT).show()
+                    launchLoginActivity()
+                } else {
+                    Log.e("TAG", "Error logging out", e)
+                }
+            }
+        }
+    }
+
+    private fun launchLoginActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     private fun launchCamera() {

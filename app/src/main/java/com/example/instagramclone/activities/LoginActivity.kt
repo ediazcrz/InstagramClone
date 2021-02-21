@@ -1,4 +1,4 @@
-package com.example.instagramclone
+package com.example.instagramclone.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instagramclone.databinding.ActivityLoginBinding
+import com.parse.ParseException.OBJECT_NOT_FOUND
+import com.parse.ParseException.USERNAME_TAKEN
 import com.parse.ParseUser
 
 private const val TAG = "LoginActivity"
@@ -53,6 +55,9 @@ class LoginActivity : AppCompatActivity() {
                 loginUser(username, password)
             } else {
                 Log.e(TAG,"Issue with sign up: ${it.message}")
+                if (it.code == USERNAME_TAKEN) {
+                    Toast.makeText(this, "Username already taken", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
@@ -66,6 +71,9 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this@LoginActivity, "You are now logged in", Toast.LENGTH_SHORT).show()
             } else {
                 Log.e(TAG,"Issue with login", e)
+                if (e.code == OBJECT_NOT_FOUND) {
+                    Toast.makeText(this, "Invalid username/password", Toast.LENGTH_LONG).show()
+                }
             }
         }))
     }

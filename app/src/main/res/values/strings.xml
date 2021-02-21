@@ -7,4 +7,5 @@
     <string name="etDescription_hint">Description...</string>
     <string name="btnCaptureImage_text">Take Picture</string>
     <string name="btnSubmit_text">Submit</string>
+    <string name="btnSignUp_text">Sign Up</string>
 </resources>

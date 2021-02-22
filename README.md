@@ -16,7 +16,7 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] User sees app icon in home screen and styled bottom navigation view
+- [X] User sees app icon in home screen and styled bottom navigation view
 - [ ] Style the feed to look like the real Instagram feed.
 - [ ] After the user submits a new post, show an indeterminate progress bar while 
 the post is being uploaded to Parse.
@@ -29,13 +29,14 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough Part 1' width='250' alt='Video Walkthrough Part 1' />
+<img src='https://imgur.com/a/Bl6CbR5' title='Video Walkthrough Part 1' width='250' alt='Video Walkthrough Part 1' />
 
 GIF created with [peek](https://github.com/phw/peek).
 
 ## Notes
+<em>Describe any challenges encountered while building the app.</em>
 
-Describe any challenges encountered while building the app.
+There were not any major challenges experienced during this part of the assignment.
 
 ## Open-source libraries used
 

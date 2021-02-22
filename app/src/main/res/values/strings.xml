@@ -9,4 +9,9 @@
     <string name="btnSubmit_text">Submit</string>
     <string name="btnSignUp_text">Sign Up</string>
     <string name="btnLogOut_text">Log Out</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_home_text">Home</string>
+    <string name="action_compose_text">Compose</string>
+    <string name="action_profile_text">Profile</string>
 </resources>

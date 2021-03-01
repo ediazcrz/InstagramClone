@@ -10,7 +10,7 @@ import com.example.instagramclone.Post
 import com.example.instagramclone.adapters.PostsAdapter.PostsViewHolder
 import com.example.instagramclone.databinding.ItemPostBinding
 
-class PostsAdapter(private val context: Context, private val posts: ArrayList<Post>): Adapter<PostsViewHolder>() {
+class PostsAdapter(private val context: Context, private val posts: MutableList<Post>): Adapter<PostsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
         val view = ItemPostBinding.inflate(LayoutInflater.from(context), parent, false)
         return PostsViewHolder(view)
@@ -23,6 +23,16 @@ class PostsAdapter(private val context: Context, private val posts: ArrayList<Po
 
     override fun getItemCount(): Int {
         return posts.size
+    }
+
+    fun clear() {
+        posts.clear()
+        notifyDataSetChanged()
+    }
+
+    fun addAll(postList: MutableList<Post>) {
+        posts.addAll(postList)
+        notifyDataSetChanged()
     }
 
     inner class PostsViewHolder(private val binding: ItemPostBinding): ViewHolder(binding.root) {

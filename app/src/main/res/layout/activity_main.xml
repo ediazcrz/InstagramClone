@@ -18,7 +18,8 @@
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF" >
+            android:background="#FFFFFF"
+            app:menu="@menu/top_app_bar" >
 
             <ImageView
                 android:layout_width="match_parent"
@@ -28,6 +29,9 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/nav_logo_whiteout" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>

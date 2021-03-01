@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.instagramclone.Post
 import com.example.instagramclone.R
 import com.example.instagramclone.adapters.PostsAdapter
@@ -17,10 +18,12 @@ import com.parse.ParseQuery
 
 private const val TAG = "PostFragment"
 
-class PostsFragment : Fragment() {
-    private val allPosts = arrayListOf<Post>()
+open class PostsFragment : Fragment() {
+    protected val allPosts = mutableListOf<Post>()
     private lateinit var rvPosts: RecyclerView
-    private lateinit var postsAdapter : PostsAdapter
+    protected lateinit var postsAdapter: PostsAdapter
+    private lateinit var swipeContainer: SwipeRefreshLayout
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,24 +37,32 @@ class PostsFragment : Fragment() {
         val postBinding = FragmentPostsBinding.bind(view)
 
         rvPosts = postBinding.rvPosts
+        swipeContainer = postBinding.swipeContainer
         postsAdapter = PostsAdapter(context!!, allPosts)
         val layoutManager = LinearLayoutManager(context)
+
+        swipeContainer.setOnRefreshListener {
+            queryPosts()
+        }
 
         rvPosts.adapter = postsAdapter
         rvPosts.layoutManager = layoutManager
         queryPosts()
     }
 
-    private fun queryPosts() {
+    protected open fun queryPosts() {
         val query = ParseQuery.getQuery(Post::class.java)
         query.include(Post.KEY_USER)
+        query.limit = 20
+        query.addDescendingOrder(Post.KEY_CREATED_AT)
         query.findInBackground { posts, e ->
             if (posts != null) {
                 for (post in posts) {
                     Log.i(TAG, "Post: ${post.description}, username: ${post.user?.username}")
                 }
-                allPosts.addAll(posts)
-                postsAdapter.notifyDataSetChanged()
+                postsAdapter.clear()
+                postsAdapter.addAll(posts)
+                swipeContainer.isRefreshing = false
             } else {
                 Log.e(TAG, "Issues with getting posts", e)
             }
